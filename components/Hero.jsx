@@ -22,25 +22,25 @@ export default function Hero() {
     if (!containerRef.current) return;
 
     const ctx = gsap.context(() => {
-      // Anti-gravity floating for background blobs
+      // Controlled Anti-gravity floating for background blobs (±15px)
       gsap.to(".bg-blob", {
-        y: 'random(-40, 40)',
-        x: 'random(-20, 20)',
-        duration: 'random(6, 10)',
+        y: 'random(-15, 15)',
+        x: 'random(-10, 10)',
+        duration: 'random(6, 8)',
         repeat: -1,
         yoyo: true,
         ease: 'sine.inOut',
       });
 
-      // Floating effect for tech icons - more pronounced
+      // Controlled Floating effect for tech icons (±6px)
       iconsRef.current.forEach((icon, index) => {
         if (icon) {
           const inner = icon.querySelector('.icon-inner');
           if (inner) {
             gsap.to(inner, {
-              y: 'random(-25, 25)',
-              x: 'random(-15, 15)',
-              duration: 'random(4, 7)',
+              y: 'random(-6, 6)',
+              x: 'random(-4, 4)',
+              duration: 'random(4, 6)',
               repeat: -1,
               yoyo: true,
               ease: 'sine.inOut',
@@ -58,7 +58,7 @@ export default function Hero() {
           end: "bottom top",
           scrub: true
         },
-        y: 100,
+        y: 80,
         opacity: 0
       });
     }, containerRef);
@@ -96,7 +96,7 @@ export default function Hero() {
               className="text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter text-white leading-[0.9]"
             >
               Islamul <br /> 
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500">
                 Hoque
               </span>
             </motion.h1>
@@ -150,24 +150,24 @@ export default function Hero() {
           className="relative flex justify-center items-center"
         >
           <div className="relative w-72 h-72 md:w-96 md:h-96 lg:w-[450px] lg:h-[450px]">
-            {/* Profile Image with advanced glassmorphism */}
+            {/* Standardized Profile Card with Glassmorphism */}
             <motion.div 
               whileHover={{ scale: 1.05, rotate: 2 }}
-              className="relative aspect-square rounded-[40px] border-4 border-white/20 shadow-[0_40px_80px_rgba(37,99,235,0.3)] overflow-hidden z-10 backdrop-blur-md bg-white/5"
+              className="relative aspect-square rounded-[40px] border border-white/10 shadow-2xl overflow-hidden z-10 backdrop-blur-xl bg-white/5 transition-all duration-500"
             >
               <img
-                src="https://github.com/Islamul-Hoque.png"
+                src="/ISHFAK.jpeg"
                 alt="Islamul Hoque"
                 className="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-blue-900/40 to-transparent" />
             </motion.div>
 
-            {/* Floating Tech Icons - Orbit-style anti-gravity */}
+            {/* Floating Tech Icons - Standardized Orbit */}
             <div className="absolute inset-[-20%] z-20 pointer-events-none">
               {techIcons.map((icon, index) => {
                 const angle = (index / techIcons.length) * (Math.PI * 2);
-                const radius = 260; // Larger orbit
+                const radius = 260; 
                 const x = Math.cos(angle) * radius;
                 const y = Math.sin(angle) * radius;
 
@@ -183,7 +183,7 @@ export default function Hero() {
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ delay: 1 + index * 0.2, type: "spring", stiffness: 100 }}
                       whileHover={{ scale: 1.2, rotate: 15 }}
-                      className="icon-inner p-4 bg-white/10 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/20 cursor-pointer group"
+                      className="icon-inner p-4 bg-white/5 backdrop-blur-xl rounded-[40px] shadow-2xl border border-white/10 cursor-pointer group hover:bg-white/10 transition-all duration-500"
                     >
                       <img 
                         src={icon.url} 

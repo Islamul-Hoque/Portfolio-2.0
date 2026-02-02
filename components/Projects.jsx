@@ -95,7 +95,7 @@ export default function Projects() {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.8 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="group relative bg-white/5 rounded-[40px] overflow-hidden border border-white/10 shadow-2xl hover:bg-white/[0.08] transition-all duration-500"
+                className="group relative bg-white/5 backdrop-blur-xl rounded-[40px] overflow-hidden border border-white/10 shadow-2xl hover:bg-white/[0.08] hover:border-white/20 transition-all duration-500"
               >
                 {/* Advanced Image Container */}
                 <div className="relative h-72 overflow-hidden">
