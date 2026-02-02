@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useLayoutEffect } from 'react';
+import { useEffect, useRef, useLayoutEffect, useState } from 'react';
 import { gsap } from 'gsap';
 import { Github, Linkedin, Download } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -15,6 +15,37 @@ const techIcons = [
 export default function Hero() {
   const containerRef = useRef(null);
   const iconsRef = useRef([]);
+  const [displayText, setDisplayText] = useState('');
+  const [roleIndex, setRoleIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  const roles = [
+    "MERN Stack Developer",
+    "Full Stack Web Developer",
+    "JavaScript Enthusiast",
+    "React & Next.js Developer"
+  ];
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      const currentRole = roles[roleIndex];
+      
+      if (isDeleting) {
+        setDisplayText(currentRole.substring(0, displayText.length - 1));
+      } else {
+        setDisplayText(currentRole.substring(0, displayText.length + 1));
+      }
+
+      if (!isDeleting && displayText === currentRole) {
+        setTimeout(() => setIsDeleting(true), 2000);
+      } else if (isDeleting && displayText === '') {
+        setIsDeleting(false);
+        setRoleIndex((roleIndex + 1) % roles.length);
+      }
+    }, isDeleting ? 50 : 100);
+
+    return () => clearTimeout(timeout);
+  }, [displayText, isDeleting, roleIndex]);
 
   const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
 
@@ -39,7 +70,6 @@ export default function Hero() {
           if (inner) {
             gsap.to(inner, {
               y: 'random(-6, 6)',
-              x: 'random(-4, 4)',
               duration: 'random(4, 6)',
               repeat: -1,
               yoyo: true,
@@ -93,27 +123,41 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter text-white leading-[0.9]"
+              className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-white leading-[0.9]"
             >
               Islamul <br /> 
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500">
                 Hoque
               </span>
             </motion.h1>
-            <motion.p 
+            
+            <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
-              className="text-2xl md:text-3xl font-medium text-gray-400 max-w-xl"
+              className="text-xl md:text-2xl font-medium text-gray-400 h-12 flex items-center gap-2"
             >
-              Building next-gen digital experiences with the MERN stack.
+              <span className="text-white/60">I am a</span>
+              <span className="text-blue-400 font-bold border-r-2 border-blue-500 pr-1 animate-pulse">
+                {displayText}
+              </span>
+            </motion.div>
+
+            <motion.p
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.8 }}
+              className="text-sm md:text-base text-gray-500 max-w-md leading-relaxed"
+            >
+              I design and build scalable, high-performance web applications  
+              with a strong focus on clean UI and smooth user experience.
             </motion.p>
           </div>
 
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8 }}
+            transition={{ delay: 1.0 }}
             className="flex flex-wrap gap-6 items-center"
           >
             <button className="relative group bg-blue-600 hover:bg-blue-700 text-white px-10 py-5 rounded-2xl font-bold flex items-center gap-3 transition-all hover:scale-[1.05] active:scale-[0.95] shadow-2xl shadow-blue-600/40">
@@ -144,30 +188,30 @@ export default function Hero() {
 
         {/* Right Side */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
-          animate={{ opacity: 1, scale: 1, rotate: 0 }}
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.5, delay: 0.2, ease: "easeOut" }}
           className="relative flex justify-center items-center"
         >
-          <div className="relative w-72 h-72 md:w-96 md:h-96 lg:w-[450px] lg:h-[450px]">
-            {/* Standardized Profile Card with Glassmorphism */}
+          <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-[400px] lg:h-[400px]">
+            {/* Circular Profile Image with Glowing Border */}
             <motion.div 
-              whileHover={{ scale: 1.05, rotate: 2 }}
-              className="relative aspect-square rounded-[40px] border border-white/10 shadow-2xl overflow-hidden z-10 backdrop-blur-xl bg-white/5 transition-all duration-500"
+              whileHover={{ scale: 1.05 }}
+              className="relative aspect-square rounded-full border-2 border-white/20 shadow-[0_0_50px_rgba(37,99,235,0.2)] overflow-hidden z-10 transition-all duration-500"
             >
               <img
                 src="/ISHFAK.jpeg"
                 alt="Islamul Hoque"
-                className="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-700"
+                className="w-full h-full object-cover grayscale-[10%] hover:grayscale-0 transition-all duration-700"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-blue-900/40 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-blue-900/20 to-transparent" />
             </motion.div>
 
-            {/* Floating Tech Icons - Standardized Orbit */}
-            <div className="absolute inset-[-20%] z-20 pointer-events-none">
+            {/* Tech Icons - Hovering near the border (Anti-gravity) */}
+            <div className="absolute inset-[-15%] z-20 pointer-events-none">
               {techIcons.map((icon, index) => {
                 const angle = (index / techIcons.length) * (Math.PI * 2);
-                const radius = 260; 
+                const radius = 220; 
                 const x = Math.cos(angle) * radius;
                 const y = Math.sin(angle) * radius;
 
@@ -176,19 +220,22 @@ export default function Hero() {
                     key={icon.name}
                     ref={(el) => (iconsRef.current[index] = el)}
                     className="absolute pointer-events-auto"
-                    style={{ transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))` }}
+                    style={{ 
+                      left: '50%',
+                      top: '50%',
+                      transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))` 
+                    }}
                   >
                     <motion.div 
-                      initial={{ opacity: 0, scale: 0 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: 1 + index * 0.2, type: "spring", stiffness: 100 }}
-                      whileHover={{ scale: 1.2, rotate: 15 }}
-                      className="icon-inner p-4 bg-white/5 backdrop-blur-xl rounded-[40px] shadow-2xl border border-white/10 cursor-pointer group hover:bg-white/10 transition-all duration-500"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 1 + index * 0.2 }}
+                      className="icon-inner p-3 bg-white/5 backdrop-blur-md rounded-full shadow-xl border border-white/10 cursor-pointer hover:bg-white/10 transition-colors duration-500"
                     >
                       <img 
                         src={icon.url} 
                         alt={icon.name} 
-                        className="w-10 h-10 md:w-12 md:h-12 object-contain group-hover:brightness-125 transition-all" 
+                        className="w-8 h-8 md:w-10 md:h-10 object-contain" 
                       />
                     </motion.div>
                   </div>
@@ -197,7 +244,7 @@ export default function Hero() {
             </div>
 
             {/* Glowing background circles */}
-            <div className="absolute inset-0 bg-blue-500/30 rounded-full blur-[100px] -z-10 animate-pulse" />
+            <div className="absolute inset-0 bg-blue-500/20 rounded-full blur-[80px] -z-10" />
           </div>
         </motion.div>
       </div>
