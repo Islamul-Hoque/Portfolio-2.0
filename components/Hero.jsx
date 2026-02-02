@@ -8,7 +8,7 @@ import { motion } from 'framer-motion';
 const techIcons = [
   { name: 'JavaScript', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
   { name: 'React', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
-  { name: 'MongoDB', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg' },
+  // { name: 'MongoDB', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg' },
   { name: 'Next.js', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg' },
 ];
 
@@ -123,7 +123,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-white leading-[0.9]"
+              className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter text-white leading-[0.9]"
             >
               Islamul <br /> 
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500">
@@ -152,12 +152,36 @@ export default function Hero() {
               I design and build scalable, high-performance web applications  
               with a strong focus on clean UI and smooth user experience.
             </motion.p>
+
+            {/* Quick Stats Block */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1, duration: 0.8 }}
+              className="flex flex-wrap gap-8 md:gap-12 pt-4"
+            >
+              {[
+                { label: 'Years Experience', value: '1+' },
+                { label: 'Projects Completed', value: '10+' },
+                { label: 'Technologies', value: '15+' },
+              ].map((stat, i) => (
+                <div key={i} className="flex flex-col gap-1">
+                  <span className="text-3xl md:text-4xl font-black text-blue-400  tracking-tighter">
+                    {stat.value}
+                  </span>
+                  <span className="text-[10px] md:text-xs uppercase tracking-widest text-gray-500 font-bold">
+                    {stat.label}
+                  </span>
+                </div>
+              ))}
+            </motion.div>
+          
           </div>
 
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.0 }}
+            transition={{ delay: 1.2 }}
             className="flex flex-wrap gap-6 items-center"
           >
             <button className="relative group bg-blue-600 hover:bg-blue-700 text-white px-10 py-5 rounded-2xl font-bold flex items-center gap-3 transition-all hover:scale-[1.05] active:scale-[0.95] shadow-2xl shadow-blue-600/40">
@@ -193,19 +217,30 @@ export default function Hero() {
           transition={{ duration: 1.5, delay: 0.2, ease: "easeOut" }}
           className="relative flex justify-center items-center"
         >
-          <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-[400px] lg:h-[400px]">
+          <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-[400px] lg:h-[400px] flex items-center justify-center">
+            {/* Rotating Dotted Ring */}
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+              className="absolute inset-[-5%] border-2 border-dashed border-blue-500/30 rounded-full z-0"
+            />
+            
             {/* Circular Profile Image with Glowing Border */}
             <motion.div 
               whileHover={{ scale: 1.05 }}
-              className="relative aspect-square rounded-full border-2 border-white/20 shadow-[0_0_50px_rgba(37,99,235,0.2)] overflow-hidden z-10 transition-all duration-500"
+              className="relative w-full h-full rounded-full border-2 border-white/20 shadow-[0_0_50px_rgba(37,99,235,0.2)] overflow-hidden z-10 transition-all duration-500"
             >
               <img
-                src="/ISHFAK.jpeg"
+                src="/ISHFAK.png"
+                // src="/ISHFAK.jpeg"
                 alt="Islamul Hoque"
                 className="w-full h-full object-cover grayscale-[10%] hover:grayscale-0 transition-all duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-blue-900/20 to-transparent" />
             </motion.div>
+
+            {/* Orbit rings for icons */}
+            <div className="absolute inset-[-15%] border border-white/5 rounded-full pointer-events-none" />
 
             {/* Tech Icons - Hovering near the border (Anti-gravity) */}
             <div className="absolute inset-[-15%] z-20 pointer-events-none">

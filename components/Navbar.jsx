@@ -45,13 +45,26 @@ export default function Navbar() {
       )}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <a 
+        {/* <a 
           href="#home" 
           onClick={(e) => handleClick(e, '#home')}
           className="text-2xl font-black tracking-tighter hover:scale-105 transition-transform text-white group"
         >
           Ishfak<span className="text-blue-500 group-hover:animate-pulse">.</span>
-        </a>
+        </a> */}
+ <a 
+  href="#home" 
+  onClick={(e) => handleClick(e, '#home')}
+  className="text-2xl font-black tracking-tighter hover:scale-105 transition-transform text-white group"
+>
+  <span className="text-blue-500">&lt;</span>
+  <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+    Ishfak
+  </span>
+  <span className="text-blue-500">/&gt;</span>
+</a>
+
+
 
         {/* Desktop Links */}
         <div className="hidden md:flex items-center space-x-10">

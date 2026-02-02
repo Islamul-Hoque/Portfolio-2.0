@@ -7,7 +7,9 @@ const skills = [
   { name: 'React.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
   { name: 'Next.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg' },
   { name: 'JavaScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
-  { name: 'Tailwind CSS', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original-wordmark.svg' },
+  { name: 'Tailwind CSS', icon: 
+// 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original-wordmark.svg' },
+'https://i.ibb.co.com/Xf8dLyxt/tailwind-css.png' },
   { name: 'CSS3', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg' },
   { name: 'HTML5', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
   { name: 'Node.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
@@ -25,7 +27,7 @@ export default function SkillsMarquee() {
     <section className="py-20 bg-white/[0.02] border-y border-white/5 backdrop-blur-sm overflow-hidden">
       <Marquee
         gradient={true}
-        gradientColor={[2, 6, 23]} // Matching deep navy background
+        gradientColor={[2, 6, 23]} 
         gradientWidth={200}
         speed={60}
         pauseOnHover={true}
@@ -33,7 +35,7 @@ export default function SkillsMarquee() {
         {skills.map((skill) => (
           <motion.div
             key={skill.name}
-            whileHover={{ scale: 1.1, y: -10 }}
+            whileHover={{ scale: 1.1 }}
             className="flex items-center gap-4 mx-12 px-8 py-5 rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 group transition-all shadow-2xl"
           >
             <div className="relative">
