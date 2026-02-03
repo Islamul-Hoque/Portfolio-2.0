@@ -1,8 +1,8 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Github, Layers } from 'lucide-react';
+import { ExternalLink, Github, Info, X, Layers } from 'lucide-react';
 
 const allProjects = [
 //   {
@@ -85,6 +85,29 @@ const categories = ['All', 'MERN', 'React', 'Next.js'];
 
 export default function Projects() {
   const [filter, setFilter] = useState('All');
+  const [selectedProject, setSelectedProject] = useState(null);
+
+  const openModal = (project) => {
+    setSelectedProject(project);
+  };
+
+  const closeModal = () => {
+    setSelectedProject(null);
+  };
+
+  // Handle body scroll lock when modal is open
+  useEffect(() => {
+    if (selectedProject) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+
+    // Cleanup function
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [selectedProject]);
 
   const filteredProjects = filter === 'All' 
     ? allProjects 
@@ -105,8 +128,8 @@ export default function Projects() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             className="text-5xl md:text-7xl font-black tracking-tighter text-white"
-          >
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">Selected Projects</span>
+          >Selected 
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500"> Projects</span>
           </motion.h2>
           
           {/* Enhanced Filters */}
@@ -151,8 +174,8 @@ export default function Projects() {
                     alt={project.name} 
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 group-hover:rotate-2"
                   />
-                  {/* Project Tag Badge */}
-                  <div className="absolute top-4 right-4 px-4 py-1.5 bg-white/20 backdrop-blur-sm border border-white/20 rounded-full text-xs font-black text-white uppercase tracking-widest">
+                {/* Project Tag Badge - Improved visibility */}
+                  <div className="absolute top-4 right-4 px-4 py-1.5 bg-white/20 backdrop-blur-sm border border-white/20 rounded-full text-xs font-black text-blue-400 uppercase tracking-widest">
                     {project.tag}
                   </div>
                   {/* Glass Overlay */}
@@ -175,6 +198,14 @@ export default function Projects() {
                     >
                       <Github size={28} />
                     </motion.a>
+                    {/* Details icon */}
+                    <motion.button
+                      whileHover={{ scale: 1.2, rotate: 10 }}
+                      onClick={() => openModal(project)}
+                      className="p-5 bg-purple-600 text-white rounded-2xl shadow-xl shadow-purple-600/40"
+                    >
+                      <Info size={28} />
+                    </motion.button>
                   </div>
                 </div>
 
@@ -182,7 +213,7 @@ export default function Projects() {
                 <div className="p-10 space-y-6">
                   <div className="flex justify-between items-start">
                     <div>
-                      <span className="text-xs font-black text-blue-400 uppercase tracking-widest">{project.tag}</span>
+                      {/* <span className="text-xs font-black text-blue-400 uppercase tracking-widest">{project.tag}</span> */}
                       <h3 className="text-3xl font-black mt-2 text-white group-hover:text-blue-400 transition-colors">{project.name}</h3>
                     </div>
                   </div>
@@ -207,6 +238,95 @@ export default function Projects() {
           </AnimatePresence>
         </div>
       </div>
+
+      {/* Modal for project details */}
+      {selectedProject && (
+        <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-[100] flex items-center justify-center p-4">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            className="relative bg-white/5 backdrop-blur-xl rounded-[40px] border border-white/10 shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto"
+          >
+            <button
+              onClick={closeModal}
+              className="absolute top-4 right-4 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors z-10"
+            >
+              <X size={24} />
+            </button>
+            
+            <div className="p-8 md:p-12">
+              <div className="flex flex-col md:flex-row gap-8">
+                <div className="md:w-1/2">
+                  <img 
+                    src={selectedProject.image} 
+                    alt={selectedProject.name} 
+                    className="w-full h-64 object-cover rounded-2xl"
+                  />
+                </div>
+                
+                <div className="md:w-1/2">
+                  <div className="flex items-center justify-between mb-4">
+                    <h3 className="text-3xl font-black text-white">{selectedProject.name}</h3>
+                    <span className="px-4 py-1.5 bg-white/20 backdrop-blur-sm border border-white/20 rounded-full text-sm font-black text-blue-400 uppercase tracking-widest">
+                      {selectedProject.tag}
+                    </span>
+                  </div>
+                  
+                  <p className="text-gray-400 text-lg mb-6">
+                    {selectedProject.description}
+                  </p>
+                  
+                  <div className="mb-6">
+                    <h4 className="text-xl font-black text-white mb-3">Features</h4>
+                    <ul className="space-y-2">
+                      {selectedProject.features.map((feature, idx) => (
+                        <li key={idx} className="flex items-start">
+                          <span className="text-blue-400 mr-2">•</span>
+                          <span className="text-gray-400">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  
+                  <div className="mb-6">
+                    <h4 className="text-xl font-black text-white mb-3">Tech Stack</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {selectedProject.stack.map((tech) => (
+                        <span 
+                          key={tech} 
+                          className="px-4 py-1.5 bg-white/5 text-gray-300 border border-white/10 text-[10px] font-black uppercase tracking-widest rounded-lg"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  <div className="flex gap-4">
+                    <a
+                      href={selectedProject.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-2xl font-bold transition-colors"
+                    >
+                      Live Demo
+                    </a>
+                    <a
+                      href={selectedProject.code}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-6 py-3 bg-white text-[#020617] rounded-2xl font-bold transition-colors"
+                    >
+                      Source Code
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      )}
     </section>
   );
 }
