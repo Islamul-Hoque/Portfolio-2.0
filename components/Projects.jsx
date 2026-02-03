@@ -5,33 +5,80 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, Github, Layers } from 'lucide-react';
 
 const allProjects = [
+//   {
+//     name: "EduConnect",
+//     tag: "MERN",
+//     image: "https://i.ibb.co.com/Fb1b7nhs/e-Tuition-BD2.png",
+//     description: "Advanced tuition management system with real-time tracking, secure payments, and interactive dashboards.",
+//     live: "#",
+//     code: "https://github.com/Islamul-Hoque/Edu-Connect-client",
+//     stack: ["React", "Node.js", "Express", "MongoDB"]
+//   },
+//   {
+//     name: "TravelEase",
+//     tag: "MERN",
+//     image: "https://i.ibb.co.com/67jtFWPM/travel-Ease-updated.png",
+//     description: "Premium car rental platform featuring dynamic fleet management, sleek UI, and integrated booking engine.",
+//     live: "https://travelease-4bacc.web.app",
+//     code: "https://github.com/Islamul-Hoque/Travel-Ease-Client",
+//     stack: ["React", "Node.js", "Express", "MongoDB"]
+//   },
+//   {
+//     name: "GreenNest",
+//     tag: "React",
+//     image: "https://i.ibb.co.com/dJxWfhTW/gn.png",
+//     description: "Eco-friendly marketplace for indoor plants with automated care guides and seamless checkout.",
+//     live: "https://green-nest-83896.web.app",
+//     code: "https://github.com/Islamul-Hoque/GreenNest",
+//     stack: ["React", "Tailwind CSS", "Firebase"]
+//   },
+// ];
+
   {
     name: "EduConnect",
     tag: "MERN",
     image: "https://i.ibb.co.com/Fb1b7nhs/e-Tuition-BD2.png",
-    description: "Advanced tuition management system with real-time tracking, secure payments, and interactive dashboards.",
-    live: "#",
+    description: "MERN-based tuition system with role-based access, secure auth, Stripe payments, and sleek dashboards.",
+    live: "https://edu-connect-e1d7e.web.app",
     code: "https://github.com/Islamul-Hoque/Edu-Connect-client",
-    stack: ["React", "Node.js", "Express", "MongoDB"]
+    features: ["Process tuition payments and track transactions via Stripe integration", 
+      "Users can find relevant tuition listings quickly by searching, filtering, sorting, and navigating pages", 
+      "Light/dark theme toggle for a comfortable viewing experience",
+      "Analytics dashboards with Recharts visualization", 
+      "Real‑time feedback system using SweetAlert2 & Toast"],
+    stack: ["React", "Node.js", "Express", "MongoDB"],
   },
   {
     name: "TravelEase",
     tag: "MERN",
     image: "https://i.ibb.co.com/67jtFWPM/travel-Ease-updated.png",
-    description: "Premium car rental platform featuring dynamic fleet management, sleek UI, and integrated booking engine.",
+    description:
+      "Responsive MERN car rental app enabling users to explore vehicles, manage bookings, and customize themes.",
     live: "https://travelease-4bacc.web.app",
     code: "https://github.com/Islamul-Hoque/Travel-Ease-Client",
-    stack: ["React", "Node.js", "Express", "MongoDB"]
+    features: ["Explore vehicles using advanced search, filtering, and sorting features", "Booking management system powered by MongoDB backend", "Dark/Light theme toggle"],
+    stack: ["React", "Node.js", "Express", "MongoDB"],
+  },
+  {
+    name: "NovaCart",
+    tag: "Next.js",
+    image: "https://i.ibb.co.com/cSwsNGNs/Nova-Cart.png",
+    description: "Full-stack e-commerce platform for dynamic product browsing and secure seller management.",
+    live: "https://nova-cart-five.vercel.app",
+    code: "https://github.com/Islamul-Hoque/NovaCart",
+    features: ["Browse products easily with dynamic listings, category, and search filters", "Secure Google/Email login with product management through protected routes", "Experience a responsive, modern UI with smooth animations"],
+    stack: ["Next.js", "Node.js", "Express", "MongoDB" ],
   },
   {
     name: "GreenNest",
     tag: "React",
     image: "https://i.ibb.co.com/dJxWfhTW/gn.png",
-    description: "Eco-friendly marketplace for indoor plants with automated care guides and seamless checkout.",
+    description:"Single-page MERN app for plant lovers to explore, buy, and care for indoor plants with secure auth.",
     live: "https://green-nest-83896.web.app",
     code: "https://github.com/Islamul-Hoque/GreenNest",
-    stack: ["React", "Tailwind CSS", "Firebase"]
-  },
+    features: ["Plant catalog exploration through search, filters, and sorting", "Firebase Authentication with Email/Password & Google Sign‑In", "Book expert consultations"],
+    stack: ["React", "Tailwind CSS", "Firebase"],
+  }
 ];
 
 const categories = ['All', 'MERN', 'React', 'Next.js'];
@@ -52,14 +99,14 @@ export default function Projects() {
             whileInView={{ opacity: 1, scale: 1 }}
             className="inline-block px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold tracking-[0.2em] uppercase mb-4"
           >
-            Showcase
+            Projects
           </motion.div>
           <motion.h2 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             className="text-5xl md:text-7xl font-black tracking-tighter text-white"
           >
-            Digital <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">Masterpieces</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">Selected Projects</span>
           </motion.h2>
           
           {/* Enhanced Filters */}
@@ -104,8 +151,12 @@ export default function Projects() {
                     alt={project.name} 
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 group-hover:rotate-2"
                   />
+                  {/* Project Tag Badge */}
+                  <div className="absolute top-4 right-4 px-4 py-1.5 bg-white/20 backdrop-blur-sm border border-white/20 rounded-full text-xs font-black text-white uppercase tracking-widest">
+                    {project.tag}
+                  </div>
                   {/* Glass Overlay */}
-                  <div className="absolute inset-0 bg-[#020617]/60 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center gap-6">
+                  <div className="absolute inset-0 bg-[#020617]/40 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center gap-6">
                     <motion.a 
                       whileHover={{ scale: 1.2, rotate: 10 }}
                       href={project.live} 

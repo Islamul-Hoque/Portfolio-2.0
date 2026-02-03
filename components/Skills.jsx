@@ -2,13 +2,8 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { 
-  FaHtml5, FaCss3Alt, FaJsSquare, FaReact, FaNodeJs, FaGithub
-} from 'react-icons/fa';
-import { 
-  SiTailwindcss, SiExpress, SiMongodb, SiFirebase, SiVercel, SiNetlify, 
-  SiNextdotjs, SiVite, SiDaisyui, SiFigma, SiReactrouter
-} from 'react-icons/si';
+import { FaHtml5, FaCss3Alt, FaJsSquare, FaReact, FaNodeJs, FaGithub } from 'react-icons/fa';
+import { SiTailwindcss, SiExpress, SiMongodb, SiFirebase, SiVercel, SiNetlify, SiNextdotjs, SiVite, SiDaisyui, SiFigma, SiReactrouter } from 'react-icons/si';
 
 const skillCategories = [
   {
@@ -73,7 +68,7 @@ const Skills = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             className="inline-block px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold tracking-[0.2em] uppercase mb-4"
           >
-            Capabilities
+            Skills
           </motion.div>
           <motion.h2 
             initial={{ opacity: 0, y: 30 }}
@@ -81,8 +76,9 @@ const Skills = () => {
             transition={{ duration: 0.8 }}
             className="text-5xl md:text-7xl font-black tracking-tighter text-white"
           >
-            Technical <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">Mastery</span>
+            Technical
+             {/* <br /> */}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500"> Mastery</span>
           </motion.h2>
         </div>
 

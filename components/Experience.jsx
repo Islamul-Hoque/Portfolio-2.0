@@ -1,23 +1,23 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { GraduationCap, Calendar, MapPin } from 'lucide-react';
+import { GraduationCap, Calendar, MapPin, Code } from 'lucide-react';
 
-const educationData = [
+const experienceData = [
   {
-    title: 'Bachelor of Science in Computer Science & Engineering',
-    institution: 'Kishoreganj University',
-    duration: '2025 – 2029 (Expected)',
-    location: 'Kishoreganj, Bangladesh',
-    description: 'Deep dive into advanced algorithms, software architecture, and distributed systems. Gained strong problem-solving skills, hands-on experience with data structures, and a solid foundation in building scalable software solutions.'
-    // description: 'Focusing on advanced algorithms, software architecture, and distributed systems.',
-    // type: 'Formal Education'
+    title: 'MERN Stack Developer',
+    company: 'Self-Directed Learning',
+    duration: '2025 – Present',
+    location: 'Remote',
+    description: 'Building full-stack web applications using the MERN (MongoDB, Express, React, Node.js) stack. Focusing on creating responsive, user-friendly interfaces and robust backend services.',
+    // type: 'Professional Experience',
+    // skills: ['MongoDB', 'Express.js', 'React', 'Node.js', 'JavaScript', 'REST APIs', 'Responsive Design']
   }
 ]
 
-export default function Education() {
+export default function Experience() {
   return (
-    <section id="education" className="py-32 relative overflow-hidden">
+    <section id="experience" className="py-32 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-24 space-y-4">
           <motion.div
@@ -25,18 +25,14 @@ export default function Education() {
             whileInView={{ opacity: 1, scale: 1 }}
             className="inline-block px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold tracking-[0.2em] uppercase mb-4"
           >
-            Education
-            {/* Education & Certification */}
-            {/* Learning */}
+            Experience
           </motion.div>
           <motion.h2 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             className="text-5xl md:text-7xl font-black tracking-tighter text-white"
-          >Academic
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500"> Background
-              {/* My academic background and professional training */}
-              </span>
+          >
+            Professional <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500"> Journey</span>
           </motion.h2>
         </div>
 
@@ -48,7 +44,7 @@ export default function Education() {
           />
 
           <div className="space-y-16">
-            {educationData.map((edu, index) => (
+            {experienceData.map((exp, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 50 }}
@@ -65,7 +61,7 @@ export default function Education() {
                 />
 
                 {/* Content Card - Left-aligned */}
-                <div className="w-full max -w-2xl">
+                <div className="w-full max- w-2xl">
                   <motion.div 
                     whileHover={{ y: -8, scale: 1.02 }}
                     className="p-8 rounded-[32px] bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl transition-all duration-500 group relative overflow-hidden"
@@ -74,34 +70,45 @@ export default function Education() {
                     
                     <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
                       <div className="flex items-center gap-2 text-blue-400">
-                        <GraduationCap size={24} />
-                        <span className="font-black text-base tracking-tight uppercase">{edu.institution}</span>
+                        <Code size={24} />
+                        <span className="font-black text-base tracking-tight uppercase">{exp.company}</span>
                       </div>
                       {/* <span className={`text-[9px] uppercase tracking-widest px-3 py-1 rounded-full font-black border ${
-                        edu.type === 'Formal Education' 
+                        exp.type === 'Professional Experience' 
                           ? 'bg-blue-500/10 text-blue-400 border-blue-500/20' 
                           : 'bg-purple-500/10 text-purple-400 border-purple-500/20'
                       }`}>
-                        {edu.type}
+                        {exp.type}
                       </span> */}
                     </div>
 
-                    <h3 className="text-2xl font-black mb-3 text-white leading-tight group-hover:text-blue-400 transition-colors">{edu.title}</h3>
+                    <h3 className="text-2xl font-black mb-3 text-white leading-tight group-hover:text-blue-400 transition-colors">{exp.title}</h3>
                     
                     <div className="flex flex-wrap gap-4 text-sm font-bold text-gray-500 mb-4">
                       <div className="flex items-center gap-1">
                         <Calendar size={16} className="text-blue-500" />
-                        {edu.duration}
+                        {exp.duration}
                       </div>
                       <div className="flex items-center gap-1">
                         <MapPin size={16} className="text-purple-500" />
-                        {edu.location}
+                        {exp.location}
                       </div>
                     </div>
 
                     <p className="text-base text-gray-400 leading-relaxed mb-4">
-                      {edu.description}
+                      {exp.description}
                     </p>
+
+                    {/* <div className="flex flex-wrap gap-2">
+                      {exp.skills.map((skill, idx) => (
+                        <span 
+                          key={idx}
+                          className="px-3 py-1.5 bg-white/5 text-gray-300 border border-white/10 text-xs font-black uppercase tracking-wide rounded-lg"
+                        >
+                          {skill}
+                        </span>
+                      ))}
+                    </div> */}
                   </motion.div>
                 </div>
               </motion.div>

@@ -15,6 +15,7 @@ const orbit2 = [
   'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg',
   'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg',
   'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg',
+  'https://i.ibb.co.com/S4TjwXWK/jwt.png'
 ];
 
 const orbit3 = [
@@ -69,7 +70,7 @@ export default function About() {
             whileInView={{ opacity: 1, scale: 1 }}
             className="inline-block px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold tracking-[0.2em] uppercase mb-4"
           >
-            Discovery
+            About me
           </motion.div>
           <motion.h2 
             initial={{ opacity: 0, y: 30 }}
@@ -77,8 +78,8 @@ export default function About() {
             transition={{ duration: 0.8 }}
             className="text-5xl md:text-7xl font-black tracking-tighter text-white"
           >
-            The Architect Behind <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">The Code</span>
+            Behind 
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500"> the Code</span>
           </motion.h2>
         </div>
 
@@ -158,24 +159,26 @@ export default function About() {
           {/* Right Side: Content */}
           <div className="space-y-12">
             <div className="space-y-6">
-              <motion.div
+              {/* <motion.div
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 className="inline-block px-4 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold uppercase tracking-widest"
               >
                 Vision & Philosophy
-              </motion.div>
+              </motion.div> */}
               <h3 className="text-3xl md:text-4xl font-black text-white leading-tight">
-                Hello there, I&apos;m a <span className="text-blue-400">MERN Stack Developer</span> based in Bangladesh.
+                Hello there, I&apos;m a <span className="text-blue-400">MERN Stack Developer</span> focused on clean code and real-world products.
               </h3>
               <p className="text-lg text-gray-400 leading-relaxed font-medium">
-                I approach every project with an architect&apos;s mindset—focusing on scalable structures, clean logic, and intuitive user flows. My mission is to build digital products that aren&apos;t just functional, but exceptional.
+                {/* I approach every project with an architect&apos;s mindset—focusing on scalable structures, clean logic, and intuitive user flows. My mission is to build digital products that aren&apos;t just functional, but exceptional. */}
+              I build scalable, maintainable applications with a strong focus on performance and user experience. I care about clean architecture, readable code, and shipping products that actually solve problems.
+
               </p>
             </div>
 
             <div className="grid gap-6">
               {[
-                { icon: GraduationCap, title: 'Academic Foundation', text: 'Currently pursuing BSc in CSE at Kishoreganj University (KujU). Certified MERN expert from Programming Hero.', color: 'blue' },
+                { icon: GraduationCap, title: 'Education', text: 'Currently pursuing a BSc in Computer Science & Engineering at Kishoreganj University (KiU).', color: 'blue' },
                 { icon: Briefcase, title: 'Development Philosophy', text: 'I prioritize performance-first architecture and modular code that grows alongside your business needs.', color: 'purple' },
                 { icon: Target, title: 'Future-Ready Goals', text: 'Deepening my expertise in cloud-native deployments and AI-driven web experiences to redefine digital boundaries.', color: 'pink' }
               ].map((item, idx) => (
