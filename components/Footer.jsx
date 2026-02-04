@@ -91,7 +91,7 @@ export default function Footer() {
 
         <div className="border-t border-white/5 pt-12 flex flex-col md:flex-row justify-between items-center gap-8">
           <p className="text-sm font-bold text-gray-500 tracking-wide">
-            © 2026 Islamul Hoque. Crafted with MERN & Vision.
+             © 2026 Islamul Hoque. Crafted with MERN & Vision.
           </p>
           
           <motion.button
