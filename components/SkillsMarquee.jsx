@@ -3,6 +3,7 @@
 import Marquee from 'react-fast-marquee';
 import { motion } from 'framer-motion';
 
+
 const skills = [
   { name: 'React.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
   { name: 'Next.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg' },
