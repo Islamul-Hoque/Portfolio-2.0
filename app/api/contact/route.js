@@ -1,5 +1,7 @@
 import { NextResponse } from 'next/server';
-import nodemailer from 'nodemailer';
+import { Resend } from 'resend';
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request) {
   try {
@@ -22,20 +24,11 @@ export async function POST(request) {
       );
     }
 
-    // Create transporter
-    const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-      },
-    });
-
-    // Email content
-    const mailOptions = {
-      from: process.env.EMAIL_USER,
-      to: process.env.EMAIL_USER,
-      replyTo: email,
+    // Send email using Resend
+    const { error } = await resend.emails.send({
+      from: 'Portfolio Contact <onboarding@resend.dev>', // You can customize this
+      to: ['islamulhoque2006@gmail.com'],
+      reply_to: email,
       subject: `New Contact Form Message from ${name}`,
       text: `
         You have received a new message from your portfolio contact form:
@@ -60,20 +53,15 @@ export async function POST(request) {
           </p>
         </div>
       `,
-    };
-
-    // Send email
-    await new Promise((resolve, reject) => {
-      transporter.sendMail(mailOptions, (err, info) => {
-        if (err) {
-          console.error('Transporter error:', err);
-          reject(err);
-        } else {
-          console.log('Email sent successfully:', info);
-          resolve(info);
-        }
-      });
     });
+
+    if (error) {
+      console.error('Resend error:', error);
+      return NextResponse.json(
+        { error: 'Failed to send message.' },
+        { status: 500 }
+      );
+    }
 
     return NextResponse.json(
       { message: 'Message sent successfully!' },
