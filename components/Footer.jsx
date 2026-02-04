@@ -1,7 +1,8 @@
 'use client';
 
-import { Github, Linkedin, MessageSquare, ArrowUp } from 'lucide-react';
+import { Github, Linkedin, MessageSquare, ArrowUp, Mail } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { FaWhatsapp } from "react-icons/fa";
 
 const quickLinks = [
   { name: 'About', href: '#about' },
@@ -31,7 +32,14 @@ export default function Footer() {
           {/* Brand */}
           <div className="space-y-6">
             <a href="#home" onClick={(e) => handleClick(e, '#home')} className="text-3xl font-black tracking-tighter text-white group">
-              Ishfak<span className="text-blue-500 group-hover:animate-pulse">.</span>
+              {/* Ishfak<span className="text-blue-500 group-hover:animate-pulse">.</span> */}
+
+  <span className="text-blue-500">&lt;</span>
+  <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+    Ishfak
+  </span>
+  <span className="text-blue-500">/&gt;</span>
+
             </a>
             <p className="text-gray-400 text-lg leading-relaxed max-w-xs">
               Designing and developing future-proof digital experiences with precision and passion.
@@ -63,7 +71,8 @@ export default function Footer() {
               {[
                 { icon: Github, url: 'https://github.com/Islamul-Hoque' },
                 { icon: Linkedin, url: 'https://linkedin.com/in/islamul-hoque' },
-                { icon: MessageSquare, url: 'https://wa.me/8801999932122' }
+                { icon: Mail, url: 'mailto:islamulhoque@gmail.com' },
+                { icon: FaWhatsapp, url: 'https://wa.me/8801999932122' },
               ].map((social, idx) => (
                 <motion.a
                   key={idx}

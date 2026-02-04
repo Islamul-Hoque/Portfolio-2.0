@@ -15,7 +15,7 @@ const skillCategories = [
       { name: "JavaScript", icon: <FaJsSquare />, color: "#F7DF1E", percent: 92 },
       { name: "HTML5", icon: <FaHtml5 />, color: "#E34F26", percent: 98 },
       { name: "CSS3", icon: <FaCss3Alt />, color: "#1572B6", percent: 95 },
-      { name: "DaisyUI", icon: <SiDaisyui />, color: "#1AD1A5", percent: 88 },
+      // { name: "DaisyUI", icon: <SiDaisyui />, color: "#1AD1A5", percent: 88 },
       { name: "React Router", icon: <SiReactrouter />, color: "#CA4245", percent: 90 },
     ]
   },
@@ -34,7 +34,7 @@ const skillCategories = [
       { name: "GitHub", icon: <FaGithub />, color: "#FFFFFF", percent: 95 },
       { name: "Vercel", icon: <SiVercel />, color: "#FFFFFF", percent: 90 },
       { name: "Netlify", icon: <SiNetlify />, color: "#00C7B7", percent: 85 },
-      { name: "Vite", icon: <SiVite />, color: "#646CFF", percent: 92 },
+      // { name: "Vite", icon: <SiVite />, color: "#646CFF", percent: 92 },
       { name: "Figma", icon: <SiFigma />, color: "#F24E1E", percent: 80 },
     ]
   }

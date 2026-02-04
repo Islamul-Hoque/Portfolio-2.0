@@ -64,8 +64,6 @@ export default function Navbar() {
   <span className="text-blue-500">/&gt;</span>
 </a>
 
-
-
         {/* Desktop Links */}
         <div className="hidden md:flex items-center space-x-10">
           {navLinks.map((link) => (

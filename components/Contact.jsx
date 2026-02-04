@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Send, MessageSquare } from 'lucide-react';
 import Swal from 'sweetalert2';
+import { FaWhatsapp } from 'react-icons/fa';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -12,8 +13,10 @@ export default function Contact() {
     message: '',
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    // Validate form fields
     if (!formData.name || !formData.email || !formData.message) {
       Swal.fire({
         title: 'Error!',
@@ -26,16 +29,85 @@ export default function Contact() {
       return;
     }
 
-    Swal.fire({
-      title: 'Success!',
-      text: 'Your message has been sent successfully.',
-      icon: 'success',
-      confirmButtonColor: '#2563eb',
-      background: '#0f172a',
-      color: '#f8fafc'
-    });
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      Swal.fire({
+        title: 'Invalid Email!',
+        text: 'Please enter a valid email address.',
+        icon: 'error',
+        confirmButtonColor: '#2563eb',
+        background: '#0f172a',
+        color: '#f8fafc'
+      });
+      return;
+    }
 
-    setFormData({ name: '', email: '', message: '' });
+    try {
+      // Show loading state
+      const loadingAlert = Swal.fire({
+        title: 'Sending...',
+        text: 'Your message is being sent',
+        allowOutsideClick: false,
+        didOpen: () => {
+          Swal.showLoading();
+        },
+        background: '#0f172a',
+        color: '#f8fafc'
+      });
+
+      // Send to API
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        // Success
+        loadingAlert.close();
+        Swal.fire({
+          title: 'Success!',
+          text: result.message,
+          icon: 'success',
+          confirmButtonColor: '#2563eb',
+          background: '#0f172a',
+          color: '#f8fafc'
+        });
+        
+        // Reset form
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        // Error
+        loadingAlert.close();
+        Swal.fire({
+          title: 'Error!',
+          text: result.error || 'Failed to send message. Please try again.',
+          icon: 'error',
+          confirmButtonColor: '#2563eb',
+          background: '#0f172a',
+          color: '#f8fafc'
+        });
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      Swal.fire({
+        title: 'Error!',
+        text: 'Network error. Please check your connection and try again.',
+        icon: 'error',
+        confirmButtonColor: '#2563eb',
+        background: '#0f172a',
+        color: '#f8fafc'
+      });
+    }
   };
 
   const handleChange = (e) => {
@@ -58,7 +130,7 @@ export default function Contact() {
             whileInView={{ opacity: 1, y: 0 }}
             className="text-5xl md:text-7xl font-black tracking-tighter text-white"
           >
-            Let&apos;s Build Together
+            Let&apos;s <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500"> Build Together</span>
           </motion.h2>
         </div>
 
@@ -73,16 +145,16 @@ export default function Contact() {
             <h3 className="text-3xl font-black text-white">Contact Information</h3>
             <div className="space-y-8">
               {[
-                { icon: Mail, label: 'Email', value: 'islamulhoque2006@gmail.com', color: 'blue' },
-                { icon: Phone, label: 'Phone', value: '+8801577432917', color: 'purple' },
-                { icon: MessageSquare, label: 'WhatsApp', value: '+8801999932122', color: 'green' },
-                { icon: MapPin, label: 'Address', value: 'Chattogram City, Bangladesh', color: 'orange' }
+                { icon: Mail, label: 'Email', value: 'islamulhoque2006@gmail.com', bgColor: 'bg-blue-500/10', textColor: 'text-blue-400' },
+                { icon: Phone, label: 'Phone', value: '+8801577432917', bgColor: 'bg-purple-500/10', textColor: 'text-purple-400' },
+                { icon: FaWhatsapp, label: 'WhatsApp', value: '+8801999932122', bgColor: 'bg-green-500/10', textColor: 'text-green-400' },
+                { icon: MapPin, label: 'Address', value: 'Chattogram City, Bangladesh', bgColor: 'bg-orange-500/10', textColor: 'text-orange-400' }
               ].map((item, idx) => (
                 <div key={idx} className="flex items-center gap-6 group">
                   <motion.div 
                     animate={{ y: [0, idx % 2 === 0 ? -10 : 10, 0] }}
                     transition={{ duration: 5 + idx, repeat: Infinity, ease: "easeInOut" }}
-                    className={`p-5 bg-${item.color}-500/10 rounded-3xl text-${item.color}-400 group-hover:scale-110 transition-transform shadow-2xl border border-white/5`}
+                    className={`p-5 ${item.bgColor} rounded-3xl ${item.textColor} group-hover:scale-110 transition-transform shadow-2xl border border-white/5`}
                   >
                     <item.icon size={32} />
                   </motion.div>
@@ -112,8 +184,9 @@ export default function Contact() {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  placeholder="Your Name"
+                  placeholder="Your full name"
                   className="w-full px-8 py-5 rounded-[24px] bg-white/5 text-white border border-white/10 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 transition-all outline-none font-bold"
+                  required
                 />
               </div>
               <div className="space-y-3">
@@ -123,8 +196,9 @@ export default function Contact() {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  placeholder="your.email@example.com"
+                  placeholder="hello@email.com"
                   className="w-full px-8 py-5 rounded-[24px] bg-white/5 text-white border border-white/10 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 transition-all outline-none font-bold"
+                  required
                 />
               </div>
               <div className="space-y-3">
@@ -134,8 +208,9 @@ export default function Contact() {
                   value={formData.message}
                   onChange={handleChange}
                   rows="5"
-                  placeholder="How can I help you?"
+                  placeholder="Tell me about your project or idea"
                   className="w-full px-8 py-5 rounded-[24px] bg-white/5 text-white border border-white/10 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 transition-all outline-none resize-none font-bold"
+                  required
                 />
               </div>
               <button
