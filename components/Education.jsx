@@ -32,7 +32,7 @@ export default function Education() {
           <motion.h2 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="text-5xl md:text-7xl font-black tracking-tighter text-white"
+            className="text-4xl md:text-6xl font-black tracking-tighter text-white"
           >Academic
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500"> Background
               {/* My academic background and professional training */}

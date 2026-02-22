@@ -26,25 +26,25 @@ const skills = [
 
 export default function SkillsMarquee() {
   return (
-    <section className="py-20 bg-white/[0.02] border-y border-white/5 backdrop-blur-sm overflow-hidden">
+    <section className="py-12 sm:py-20 bg-white/[0.02] border-y border-white/5 backdrop-blur-sm overflow-hidden">
       <Marquee
         gradient={true}
         gradientColor={[2, 6, 23]} 
-        gradientWidth={200}
-        speed={60}
+        gradientWidth={100}
+        speed={50}
         pauseOnHover={true}
       >
         {skills.map((skill) => (
           <motion.div
             key={skill.name}
-            whileHover={{ scale: 1.1 }}
-            className="flex items-center gap-4 mx-12 px-8 py-5 rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 group transition-all shadow-2xl"
+            whileHover={{ scale: 1.05 }}
+            className="flex items-center gap-3 sm:gap-4 mx-6 sm:mx-12 px-6 sm:px-8 py-4 sm:py-5 rounded-2xl sm:rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 group transition-all shadow-xl sm:shadow-2xl"
           >
             <div className="relative">
                <div className="absolute inset-0 bg-blue-500/20 blur-lg rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
-               <img src={skill.icon} alt={skill.name} className="w-10 h-10 object-contain relative z-10" />
+               <img src={skill.icon} alt={skill.name} className="w-8 h-8 sm:w-10 sm:h-10 object-contain relative z-10" />
             </div>
-            <span className="font-black text-xl tracking-tight text-gray-300 group-hover:text-white transition-colors">
+            <span className="font-black text-lg sm:text-xl tracking-tight text-gray-300 group-hover:text-white transition-colors">
               {skill.name}
             </span>
           </motion.div>

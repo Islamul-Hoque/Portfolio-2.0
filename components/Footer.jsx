@@ -31,18 +31,18 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-16 mb-20">
           {/* Brand */}
           <div className="space-y-6">
-            <a href="#home" onClick={(e) => handleClick(e, '#home')} className="text-3xl font-black tracking-tighter text-white group">
+            <a href="#home" onClick={(e) => handleClick(e, '#home')} className="text-2xl font-black tracking-tighter text-white group">
               {/* Ishfak<span className="text-blue-500 group-hover:animate-pulse">.</span> */}
 
-  <span className="text-blue-500">&lt;</span>
-  <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
-    Ishfak
-  </span>
-  <span className="text-blue-500">/&gt;</span>
+              <span className="text-blue-500">&lt;</span>
+              <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+                Ishfak
+              </span>
+              <span className="text-blue-500">/&gt;</span>
 
             </a>
-            <p className="text-gray-400 text-lg leading-relaxed max-w-xs">
-              Designing and developing future-proof digital experiences with precision and passion.
+            <p className="text-gray-400 text-lg leading-relaxed md:max-w-[45rem]">
+              Crafting high-performance web experiences with clean code and thoughtful design.
             </p>
           </div>
 
@@ -91,7 +91,7 @@ export default function Footer() {
 
         <div className="border-t border-white/5 pt-12 flex flex-col md:flex-row justify-between items-center gap-8">
           <p className="text-sm font-bold text-gray-500 tracking-wide">
-             © 2026 Islamul Hoque. Crafted with MERN & Vision.
+            &copy; {new Date().getFullYear()} Islamul Hoque. Built with Next.js & Vision.
           </p>
           
           <motion.button

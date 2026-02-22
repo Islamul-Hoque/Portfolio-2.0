@@ -19,6 +19,17 @@ export default function Hero() {
   const [roleIndex, setRoleIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
 
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  const getRadius = () => {
+    if (!isClient) return 220; // Default for SSR
+    return window.innerWidth < 640 ? 140 : window.innerWidth < 768 ? 180 : 220;
+  };
+
   const roles = [
     "MERN Stack Developer",
     "Full Stack Web Developer",
@@ -102,13 +113,13 @@ export default function Hero() {
       <div className="absolute top-1/4 -left-20 w-96 h-96 bg-blue-600/20 rounded-full blur-[100px] -z-10 bg-blob" />
       <div className="absolute bottom-1/4 -right-20 w-[500px] h-[500px] bg-purple-600/20 rounded-full blur-[120px] -z-10 bg-blob" />
 
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full z-10 hero-content" ref={containerRef}>
+      <div className="max-w-7xl py-14  mx-auto px-6 grid  grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full z-10 hero-content" ref={containerRef}>
         {/* Left Side */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1.2, ease: "easeOut" }}
-          className="space-y-8"
+          className="space-y-8 order-2 lg:order-1"
         >
           <div className="space-y-4">
             <motion.div
@@ -123,10 +134,9 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter text-white leading-[0.9]"
+              className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter text-white leading-[0.9]"
             >
-              Islamul <br /> 
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500">
+              Islamul <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-400 via-purple-500 to-pink-500">
                 Hoque
               </span>
             </motion.h1>
@@ -215,7 +225,7 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.5, delay: 0.2, ease: "easeOut" }}
-          className="relative flex justify-center items-center"
+          className="relative flex justify-center order-1 lg:order-2  items-center"
         >
           <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-[400px] lg:h-[400px] flex items-center justify-center">
             {/* Rotating Dotted Ring */}
@@ -243,10 +253,10 @@ export default function Hero() {
             <div className="absolute inset-[-15%] border border-white/5 rounded-full pointer-events-none" />
 
             {/* Tech Icons - Hovering near the border (Anti-gravity) */}
-            <div className="absolute inset-[-15%] z-20 pointer-events-none">
+            <div className="absolute inset-[-20%] z-20 pointer-events-none">
               {techIcons.map((icon, index) => {
                 const angle = (index / techIcons.length) * (Math.PI * 2);
-                const radius = 220; 
+                const radius = getRadius();
                 const x = Math.cos(angle) * radius;
                 const y = Math.sin(angle) * radius;
 
@@ -265,12 +275,12 @@ export default function Hero() {
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ delay: 1 + index * 0.2 }}
-                      className="icon-inner p-3 bg-white/5 backdrop-blur-md rounded-full shadow-xl border border-white/10 cursor-pointer hover:bg-white/10 transition-colors duration-500"
+                      className="icon-inner p-2 sm:p-3 bg-white/5 backdrop-blur-md rounded-full shadow-xl border border-white/10 cursor-pointer hover:bg-white/10 transition-colors duration-500"
                     >
                       <img 
                         src={icon.url} 
                         alt={icon.name} 
-                        className="w-8 h-8 md:w-10 md:h-10 object-contain" 
+                        className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 object-contain" 
                       />
                     </motion.div>
                   </div>
