@@ -90,9 +90,9 @@ const allProjects = [
     image: "/greenNest.png",
     images: [
       "/greenNest.png",
-      "https://i.ibb.co.com/dJxWfhTW/gn.png",
-      "https://i.ibb.co.com/dJxWfhTW/gn.png",
-      "https://i.ibb.co.com/dJxWfhTW/gn.png"
+      "https://i.ibb.co.com/TqYVjL2N/image.png",
+      "https://i.ibb.co.com/q3VKmW78/image.png",
+      "https://i.ibb.co.com/CTjQVS7/image.png",
     ],
     description:"Single-page MERN app for plant lovers to explore, buy, and care for indoor plants with secure auth.",
     longDescription: "GreenNest is a specialized e-commerce platform for indoor plant enthusiasts. It offers a curated catalog of plants with detailed care guides, expert consultation booking, and secure checkout. The application features Firebase authentication, intuitive search and filtering, and educational resources for plant care.",

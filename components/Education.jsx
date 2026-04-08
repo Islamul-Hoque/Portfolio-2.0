@@ -7,7 +7,7 @@ const educationData = [
   {
     title: 'Bachelor of Science in Computer Science & Engineering',
     institution: 'Kishoreganj University',
-    duration: '2025 – 2029 (Expected)',
+    duration: '2026 – 2030 (Expected)',
     location: 'Kishoreganj, Bangladesh',
     description: 'Deep dive into advanced algorithms, software architecture, and distributed systems. Gained strong problem-solving skills, hands-on experience with data structures, and a solid foundation in building scalable software solutions.'
     // description: 'Focusing on advanced algorithms, software architecture, and distributed systems.',

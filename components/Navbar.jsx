@@ -31,18 +31,24 @@ export default function Navbar() {
 
   const handleClick = (e, href) => {
     e.preventDefault();
+    e.stopPropagation();
     
-    if (isProjectPage) {
-      // If on project page, navigate to main page first, then scroll
-      window.location.href = `/${href}`;
-    } else {
-      // If on main page, smooth scroll
-      const element = document.querySelector(href);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
+    // Close mobile menu first
     setIsMobileMenuOpen(false);
+
+    // Small delay to ensure menu closes before navigation
+    setTimeout(() => {
+      if (isProjectPage) {
+        // If on project page, navigate to main page first, then scroll
+        window.location.href = `/${href}`;
+      } else {
+        // If on main page, smooth scroll
+        const element = document.querySelector(href);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    }, 100);
   };
 
   return (
@@ -62,17 +68,13 @@ export default function Navbar() {
         >
           Ishfak<span className="text-blue-500 group-hover:animate-pulse">.</span>
         </a> */}
- <a 
-  href="#home" 
-  onClick={(e) => handleClick(e, '#home')}
-  className="text-2xl font-black tracking-tighter hover:scale-105 transition-transform text-white group"
->
-  <span className="text-blue-500">&lt;</span>
-  <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
-    Ishfak
-  </span>
-  <span className="text-blue-500">/&gt;</span>
-</a>
+
+        <a  href="#home"   onClick={(e) => handleClick(e, '#home')} className="text-2xl font-black tracking-tighter hover:scale-105 transition-transform text-white group">
+          <span className="text-blue-500">&lt;</span>
+          <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+            Ishfak </span>
+          <span className="text-blue-500">/&gt;</span>
+        </a>
 
         {/* Desktop Links */}
         <div className="hidden md:flex items-center space-x-10">
@@ -147,6 +149,7 @@ export default function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
+
     </nav>
   );
 }
