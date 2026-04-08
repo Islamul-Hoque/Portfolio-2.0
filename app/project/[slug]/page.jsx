@@ -134,7 +134,182 @@ export default function ProjectDetails() {
         <Navbar />
       
       {/* Hero Section */}
-     
+      <section className="pt-32 pb-20 px-6">
+        <div className="max-w-7xl mx-auto">
+          {/* Back Button */}
+          <motion.button
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.3 }}
+            onClick={() => {
+              router.push('/#projects');
+            }}
+            className="flex items-center gap-3 text-gray-400 hover:text-white transition-all mb-8 group cursor-pointer"
+          >
+            <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
+            <span className="font-bold text-sm uppercase tracking-widest">Back to Projects</span>
+          </motion.button>
+
+          {/* Project Header */}
+          <div className="mb-12">
+            <div className="flex items-center gap-4 mb-4">
+              <span className="px-4 py-1.5 bg-blue-600/20 backdrop-blur-xl border border-blue-500/30 rounded-full text-sm font-black text-blue-400 uppercase tracking-widest">
+                {project.tag}
+              </span>
+            </div>
+            <h1 className="text-4xl md:text-6xl font-black text-white mb-4">
+              {project.name}
+            </h1>
+            <p className="text-xl text-gray-300 max-w-4xl">
+              {project.description}
+            </p>
+          </div>
+
+          {/* Main Content Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+            {/* Left: Image Gallery */}
+            <div className="space-y-6">
+              {/* Large Main Image */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="relative aspect-video rounded-3xl overflow-hidden border border-white/10 shadow-2xl"
+              >
+                <img
+                  src={project.images[selectedImage]}
+                  alt={`${project.name} screenshot ${selectedImage + 1}`}
+                  className="w-full h-full object-cover"
+                />
+              </motion.div>
+
+              {/* Thumbnail Grid */}
+              <div className="grid grid-cols-4 gap-4">
+                {project.images.map((img, idx) => (
+                  <motion.button
+                    key={idx}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: idx * 0.1 }}
+                    onClick={() => setSelectedImage(idx)}
+                    className={`relative aspect-video rounded-xl overflow-hidden border-2 transition-all ${
+                      selectedImage === idx
+                        ? 'border-blue-500 shadow-lg shadow-blue-500/30'
+                        : 'border-white/10 hover:border-white/30'
+                    }`}
+                  >
+                    <img
+                      src={img}
+                      alt={`Thumbnail ${idx + 1}`}
+                      className="w-full h-full object-cover"
+                    />
+                  </motion.button>
+                ))}
+              </div>
+            </div>
+
+            {/* Right: Project Info */}
+            <div className="space-y-8">
+              {/* Long Description */}
+              <div>
+                <h3 className="text-2xl font-black text-white mb-4 flex items-center gap-3">
+                  <span className="w-1.5 h-8 bg-blue-600 rounded-full"></span>
+                  Overview
+                </h3>
+                <p className="text-gray-300 leading-relaxed text-lg">
+                  {project.longDescription}
+                </p>
+              </div>
+
+              {/* Quick Links */}
+              <div>
+                <h3 className="text-2xl font-black text-white mb-6 flex items-center gap-3">
+                  <span className="w-1.5 h-8 bg-green-600 rounded-full"></span>
+                  Quick Links
+                </h3>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <a
+                    href={project.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 px-8 py-5 bg-blue-600 hover:bg-blue-700 text-white rounded-2xl font-bold text-lg transition-all hover:scale-105 shadow-xl shadow-blue-600/30 flex items-center justify-center gap-3"
+                  >
+                    <ExternalLink size={22} />
+                    Live Demo
+                  </a>
+                  <a
+                    href={project.code}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 px-8 py-5 bg-white hover:bg-gray-100 text-[#020617] rounded-2xl font-bold text-lg transition-all hover:scale-105 shadow-xl flex items-center justify-center gap-3"
+                  >
+                    <Github size={22} />
+                    Source Code
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Technologies Used */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-20"
+          >
+            <h3 className="text-3xl font-black text-white mb-8 flex items-center gap-3">
+              <span className="w-2 h-10 bg-purple-600 rounded-full"></span>
+              Technologies Used
+            </h3>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4">
+              {project.technologies.map((tech, idx) => (
+                <motion.div
+                  key={tech}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: idx * 0.05 }}
+                  viewport={{ once: true }}
+                  className="px-6 py-4 bg-white/5 border border-white/10 rounded-2xl flex flex-col items-center justify-center gap-2 group hover:border-blue-500/50 hover:bg-blue-600/10 transition-all"
+                >
+                  <Layers size={24} className="text-blue-500 group-hover:scale-110 transition-transform" />
+                  <span className="text-sm font-bold text-gray-300 group-hover:text-white text-center">
+                    {tech}
+                  </span>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Key Features */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h3 className="text-3xl font-black text-white mb-8 flex items-center gap-3">
+              <span className="w-2 h-10 bg-pink-600 rounded-full"></span>
+              Key Features
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {project.features.map((feature, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ delay: idx * 0.1 }}
+                  viewport={{ once: true }}
+                  className="flex items-start gap-4 p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-blue-500/30 transition-all group"
+                >
+                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-blue-600/20 flex items-center justify-center group-hover:bg-blue-600/30 transition-colors">
+                    <CheckCircle size={20} className="text-blue-400" />
+                  </div>
+                  <p className="text-gray-300 leading-relaxed pt-2">{feature}</p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
 
       <Footer />
     </div>
