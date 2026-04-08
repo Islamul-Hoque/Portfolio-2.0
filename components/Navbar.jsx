@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
+import { usePathname } from 'next/navigation';
 
 const navLinks = [
   { name: 'Home', href: '#home' },
@@ -17,6 +18,8 @@ const navLinks = [
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const isProjectPage = pathname?.startsWith('/project/');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,9 +31,16 @@ export default function Navbar() {
 
   const handleClick = (e, href) => {
     e.preventDefault();
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    
+    if (isProjectPage) {
+      // If on project page, navigate to main page first, then scroll
+      window.location.href = `/${href}`;
+    } else {
+      // If on main page, smooth scroll
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
     setIsMobileMenuOpen(false);
   };
@@ -104,26 +114,35 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="absolute top-full left-0 right-0 bg-[#020617] border-t border-white/10 p-8 md:hidden overflow-hidden"
+            className="absolute top-full left-0 right-0 bg-[#020617]/95 backdrop-blur-xl border-t border-white/10 md:hidden overflow-hidden"
           >
-            <div className="flex flex-col space-y-6">
-              {navLinks.map((link) => (
-                <a
+            <div className="p-6 space-y-2">
+              {navLinks.map((link, idx) => (
+                <motion.a
                   key={link.name}
                   href={link.href}
                   onClick={(e) => handleClick(e, link.href)}
-                  className="text-xl font-bold text-gray-300 hover:text-white transition-colors"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: idx * 0.1 }}
+                  className="flex items-center gap-3 px-4 py-4 rounded-xl text-gray-300 hover:text-white hover:bg-white/5 transition-all group"
                 >
-                  {link.name}
-                </a>
+                  <span className="w-1 h-8 bg-blue-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <span className="text-lg font-bold">{link.name}</span>
+                </motion.a>
               ))}
-              <a
+              
+              {/* Mobile Hire Me Button */}
+              <motion.a
                 href="#contact"
                 onClick={(e) => handleClick(e, '#contact')}
-                className="w-full py-4 bg-blue-600 text-white text-center font-bold rounded-2xl"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: navLinks.length * 0.1 }}
+                className="block w-full py-4 mt-4 bg-blue-600 hover:bg-blue-700 text-white text-center font-bold rounded-xl transition-all active:scale-95 shadow-lg shadow-blue-600/30"
               >
-                Get In Touch
-              </a>
+                Hire Me
+              </motion.a>
             </div>
           </motion.div>
         )}

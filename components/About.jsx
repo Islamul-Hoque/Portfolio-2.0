@@ -27,6 +27,7 @@ const orbit3 = [
   "https://i.ibb.co.com/B2tH4LDf/Git-removebg-preview.png",
   "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg",
   "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
+  "https://i.ibb.co.com/n8NyzRM2/Shadcn.png",
   "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
 ];
 

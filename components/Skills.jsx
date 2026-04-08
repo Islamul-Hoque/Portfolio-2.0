@@ -98,61 +98,33 @@ const Skills = () => {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.1 }}
-                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
               >
                 {category.skills.map((skill, sIdx) => (
                   <motion.div 
                     key={sIdx}
                     variants={cardVariants}
-                    className="relative group bg-white/5 backdrop-blur-xl border border-white/10 p-10 rounded-[40px] flex flex-col gap-8 transition-all duration-500 shadow-2xl hover:bg-white/[0.08] hover:border-white/20"
+                    className="relative group bg-white/5 backdrop-blur-xl border border-white/10 p-10 rounded-[40px] flex flex-col gap-8 items-center justify-center text-center transition-all duration-500 shadow-2xl hover:bg-white/[0.08] hover:border-white/20"
                   >
-                    {/* Top Row: Icon and Percentage */}
-                    <div className="flex items-center justify-between">
-                      {/* Controlled Anti-gravity Icon (±6px) */}
-                      <motion.div 
-                        animate={{ y: [0, -6, 0] }}
-                        transition={{ 
-                          duration: 5 + (sIdx % 2), 
-                          repeat: Infinity, 
-                          ease: "easeInOut",
-                          delay: sIdx * 0.1
-                        }}
-                        className="text-5xl transition-all duration-500 group-hover:scale-110 group-hover:brightness-125"
-                        style={{ color: skill.color }}
-                      >
-                        {skill.icon}
-                      </motion.div>
-                      
-                      <div className="flex flex-col items-end">
-                        <span className="text-xl font-black text-white tracking-tighter">
-                          {skill.percent}%
-                        </span>
-                        <span className="text-[10px] font-bold text-blue-400 uppercase tracking-widest opacity-60">Level</span>
-                      </div>
-                    </div>
+                    {/* Centered Icon with Animation */}
+                    <motion.div 
+                      animate={{ y: [0, -6, 0] }}
+                      transition={{ 
+                        duration: 5 + (sIdx % 2), 
+                        repeat: Infinity, 
+                        ease: "easeInOut",
+                        delay: sIdx * 0.1
+                      }}
+                      className="text-6xl transition-all duration-500 group-hover:scale-110 group-hover:brightness-125"
+                      style={{ color: skill.color }}
+                    >
+                      {skill.icon}
+                    </motion.div>
 
-                    {/* Skill Info & Progress Bar */}
-                    <div className="space-y-6">
-                      <h4 className="text-xl font-black text-white tracking-tight uppercase group-hover:text-blue-400 transition-colors">
-                        {skill.name}
-                      </h4>
-
-                      {/* Progress Bar Container */}
-                      <div className="relative h-2.5 w-full bg-white/5 rounded-full overflow-hidden border border-white/5 p-[2px]">
-                        {/* Fill - Animated on Scroll */}
-                        <motion.div
-                          initial={{ width: 0 }}
-                          whileInView={{ width: `${skill.percent}%` }}
-                          transition={{ duration: 1.8, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
-                          viewport={{ once: true }}
-                          className="absolute h-full rounded-full shadow-[0_0_15px_rgba(255,255,255,0.1)]"
-                          style={{ 
-                            backgroundColor: skill.color,
-                            boxShadow: `0 0 20px ${skill.color}40`
-                          }}
-                        />
-                      </div>
-                    </div>
+                    {/* Skill Name */}
+                    <h4 className="text-xl font-black text-white tracking-tight uppercase group-hover:text-blue-400 transition-colors">
+                      {skill.name}
+                    </h4>
 
                     {/* Subtle glow on hover */}
                     <div 
