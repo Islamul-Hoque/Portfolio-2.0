@@ -110,19 +110,12 @@ export default function About() {
     >
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-24 space-y-4">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.5 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+          <motion.div initial={{ opacity: 0, scale: 0.5 }} whileInView={{ opacity: 1, scale: 1 }}
             className="inline-block px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold tracking-[0.2em] uppercase mb-4"
-          >
-            About me
+          >  About me
           </motion.div>
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-4xl md:text-6xl font-black tracking-tighter text-white"
-          >
+          <motion.h2 initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}  transition={{ duration: 0.8 }}
+            className="text-4xl md:text-6xl font-black tracking-tighter text-white" >
             Behind
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
               {" "}
@@ -153,9 +146,7 @@ export default function About() {
                   }}
                 >
                   <div className="floating-icon w-full h-full p-2.5 bg-white/10 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/10 flex items-center justify-center group hover:bg-white/20 transition-colors">
-                    <img
-                      src={url}
-                      alt="icon"
+                    <img  src={url} alt="icon"
                       className="w-full h-full object-contain brightness-110 group-hover:scale-110 transition-transform"
                     />
                   </div>
@@ -179,9 +170,7 @@ export default function About() {
                   }}
                 >
                   <div className="floating-icon w-full h-full p-2.5 bg-white/10 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/10 flex items-center justify-center group hover:bg-white/20 transition-colors">
-                    <img
-                      src={url}
-                      alt="icon"
+                    <img  src={url}   alt="icon"
                       className="w-full h-full object-contain brightness-110 group-hover:scale-110 transition-transform"
                     />
                   </div>
@@ -205,9 +194,7 @@ export default function About() {
                   }}
                 >
                   <div className="floating-icon w-full h-full p-2.5 bg-white/10 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/10 flex items-center justify-center group hover:bg-white/20 transition-colors">
-                    <img
-                      src={url}
-                      alt="icon"
+                    <img  src={url}        alt="icon"
                       className="w-full h-full object-contain brightness-110 group-hover:scale-110 transition-transform"
                     />
                   </div>
@@ -260,19 +247,22 @@ export default function About() {
                   icon: GraduationCap,
                   title: "Education",
                   text: "Currently pursuing a BSc in Computer Science & Engineering at Kishoreganj University (KiU).",
-                  color: "blue",
+                  bgColor: "bg-blue-500/10",
+                  textColor: "text-blue-400",
                 },
                 {
                   icon: Briefcase,
                   title: "Development Philosophy",
                   text: "I prioritize performance-first architecture and modular code that grows alongside your business needs.",
-                  color: "purple",
+                  bgColor: "bg-purple-500/10",
+                  textColor: "text-purple-400",
                 },
                 {
                   icon: Target,
                   title: "Future-Ready Goals",
                   text: "Deepening my expertise in cloud-native deployments and AI-driven web experiences to redefine digital boundaries.",
-                  color: "pink",
+                  bgColor: "bg-teal-500/10",
+                  textColor: "text-teal-400",
                 },
               ].map((item, idx) => (
                 <motion.div
@@ -288,7 +278,7 @@ export default function About() {
                   className="p-8 rounded-[32px] bg-white/5 border border-white/10 flex gap-6 items-center transition-all cursor-default group"
                 >
                   <div
-                    className={`p-4 bg-${item.color}-500/10 rounded-2xl text-${item.color}-400 group-hover:scale-110 transition-transform`}
+                    className={`p-4 ${item.bgColor} rounded-2xl ${item.textColor} group-hover:scale-110 transition-transform`}
                   >
                     <item.icon size={32} />
                   </div>
