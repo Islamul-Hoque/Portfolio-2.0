@@ -17,7 +17,8 @@
 
 ## <img src="public/icons/overview.svg" alt="Overview Icon" width="24" height="24" /> Project Overview
 
-Welcome to Portfolio 2.0, a state-of-the-art interactive portfolio designed as a premium open-source showcase. Built with Next.js, React 19, and Tailwind CSS v4, this application represents professional-grade frontend architecture. It integrates highly interactive 3D particle simulations, hardware-accelerated scroll animations, and dynamic API configurations to deliver a visually striking and responsive user experience.
+Welcome to Portfolio, a state-of-the-art interactive portfolio designed as a premium open-source showcase. Built with Next.js, and React 19, this application represents professional-grade frontend architecture.     
+It integrates highly interactive 3D particle simulations, hardware-accelerated scroll animations, and dynamic API configurations to deliver a visually striking and responsive user experience.
 
 ---
 

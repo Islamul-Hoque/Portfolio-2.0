@@ -104,7 +104,7 @@ export default function Navbar() {
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-500 px-6 py-4',
         isScrolled
-          ? 'bg-[#020617]/80 backdrop-blur-xl shadow-2xl shadow-black/50 py-3 border-b border-white/10'
+          ? 'bg-[#020617]/50 backdrop-blur-xl shadow-2xl shadow-black/50 py-3 border-b border-white/10'
           : 'bg-transparent'
       )}
     >

@@ -22,15 +22,26 @@ export default function Hero() {
   const [isDeleting, setIsDeleting] = useState(false);
 
   const [isClient, setIsClient] = useState(false);
+  const [radius, setRadius] = useState(220);
 
   useEffect(() => {
     setIsClient(true);
+    const updateRadius = () => {
+      const width = window.innerWidth;
+      if (width < 380) {
+        setRadius(110);
+      } else if (width < 640) {
+        setRadius(140);
+      } else if (width < 768) {
+        setRadius(180);
+      } else {
+        setRadius(220);
+      }
+    };
+    updateRadius();
+    window.addEventListener("resize", updateRadius);
+    return () => window.removeEventListener("resize", updateRadius);
   }, []);
-
-  const getRadius = () => {
-    if (!isClient) return 220; // Default for SSR
-    return window.innerWidth < 640 ? 140 : window.innerWidth < 768 ? 180 : 220;
-  };
 
   const roles = [
     "MERN Stack Developer",
@@ -115,7 +126,7 @@ export default function Hero() {
       <div className="absolute top-1/4 -left-20 w-96 h-96 bg-blue-600/20 rounded-full blur-[100px] -z-10 bg-blob" />
       <div className="absolute bottom-1/4 -right-20 w-[500px] h-[500px] bg-purple-600/20 rounded-full blur-[120px] -z-10 bg-blob" />
 
-      <div className="max-w-7xl py-14  mx-auto px-6 grid  grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full z-10 hero-content" ref={containerRef}>
+      <div className="max-w-7xl pt-14 pb-28 lg:py-14  mx-auto px-6 grid  grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full z-10 hero-content" ref={containerRef}>
         {/* Left Side */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
@@ -194,14 +205,14 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.2 }}
-            className="flex flex-wrap gap-6 items-center"
+            className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-center lg:items-start w-full"
           >
-            <a href="https://drive.google.com/file/d/1Ayf9mT8R6bqHyuOiaeUfmeXao-gfnc5j/view?usp=drive_link" target="_blank" rel="noopener noreferrer" className="cursor-pointer relative group bg-blue-600 hover:bg-blue-700 text-white px-10 py-5 rounded-2xl font-bold flex items-center gap-3 transition-all hover:scale-[1.05] active:scale-[0.95] shadow-2xl shadow-blue-600/40">
+            <a href="https://drive.google.com/file/d/1Ayf9mT8R6bqHyuOiaeUfmeXao-gfnc5j/view?usp=drive_link" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto justify-center cursor-pointer relative group bg-blue-600 hover:bg-blue-700 text-white px-10 py-5 rounded-2xl font-bold flex items-center gap-3 transition-all hover:scale-[1.05] active:scale-[0.95] shadow-2xl shadow-blue-600/40">
               <div className="absolute inset-0 bg-white/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
               <Eye size={22} className="group-hover:-translate-y-0.5 transition-transform" />
               View Resume
             </a>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center justify-center gap-4 w-full sm:w-auto">
               <a href="https://github.com/Islamul-Hoque" target="_blank" rel="noopener noreferrer"
                 className="p-5 rounded-2xl bg-white/5 border border-white/10 text-white hover:border-blue-500 hover:text-blue-400 transition-all shadow-xl backdrop-blur-sm group"
               > <Github size={28} className="group-hover:rotate-12 transition-transform" />
@@ -250,7 +261,6 @@ export default function Hero() {
             <div className="absolute inset-[-20%] z-20 pointer-events-none">
               {techIcons.map((icon, index) => {
                 const angle = (index / techIcons.length) * (Math.PI * 2);
-                const radius = getRadius();
                 const x = Math.cos(angle) * radius;
                 const y = Math.sin(angle) * radius;
 
