@@ -119,7 +119,7 @@ export default function ProjectDetails() {
 
   if (!project) {
     return (
-      <div className="min-h-screen bg-[#020617] flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center">
         <div className="text-center space-y-4">
           <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto"></div>
           <p className="text-white text-xl font-bold">Loading...</p>
@@ -130,7 +130,7 @@ export default function ProjectDetails() {
 
   return (
     <SmoothScroll>
-      <div className="min-h-screen bg-[#020617]">
+      <div className="min-h-screen">
         <Navbar />
       
       {/* Hero Section */}
@@ -142,7 +142,7 @@ export default function ProjectDetails() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.3 }}
             onClick={() => {
-              router.push('/#projects');
+              router.push(`/#project-${project.slug}`);
             }}
             className="flex items-center gap-3 text-gray-400 hover:text-white transition-all mb-8 group cursor-pointer"
           >
@@ -191,7 +191,7 @@ export default function ProjectDetails() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: idx * 0.1 }}
                     onClick={() => setSelectedImage(idx)}
-                    className={`relative aspect-video rounded-xl overflow-hidden border-2 transition-all ${
+                    className={`relative cursor-pointer  aspect-video rounded-xl overflow-hidden border-2 transition-all ${
                       selectedImage === idx
                         ? 'border-blue-500 shadow-lg shadow-blue-500/30'
                         : 'border-white/10 hover:border-white/30'

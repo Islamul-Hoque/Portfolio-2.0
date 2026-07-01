@@ -4,6 +4,8 @@ import { Github, Linkedin, MessageSquare, ArrowUp, Mail } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { FaWhatsapp } from "react-icons/fa";
 
+import { usePathname, useRouter } from 'next/navigation';
+
 const quickLinks = [
   { name: 'About', href: '#about' },
   { name: 'Skills', href: '#skills' },
@@ -13,15 +15,31 @@ const quickLinks = [
 ];
 
 export default function Footer() {
+  const pathname = usePathname();
+  const router = useRouter();
+  const isProjectPage = pathname?.startsWith('/project/');
+
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (window.lenis) {
+      window.lenis.scrollTo(0, { duration: 1.5 });
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   const handleClick = (e, href) => {
     e.preventDefault();
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    if (isProjectPage) {
+      router.push(`/${href}`);
+    } else {
+      const element = document.querySelector(href);
+      if (element) {
+        if (window.lenis) {
+          window.lenis.scrollTo(element, { duration: 1.5 });
+        } else {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
     }
   };
 

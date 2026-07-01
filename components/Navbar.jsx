@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 
 const navLinks = [
   { name: 'Home', href: '#home' },
@@ -19,6 +19,7 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
   const isProjectPage = pathname?.startsWith('/project/');
 
   useEffect(() => {
@@ -28,6 +29,49 @@ export default function Navbar() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (!isProjectPage && typeof window !== 'undefined' && window.location.hash) {
+      const hash = window.location.hash;
+      const timeoutId = setTimeout(() => {
+        const element = document.querySelector(hash);
+        if (element) {
+          if (window.lenis) {
+            let lastOffset = -1;
+            const scrollAndCheck = () => {
+              // Recalculate target position to handle dynamic layout changes
+              const currentOffset = element.getBoundingClientRect().top + window.scrollY;
+              if (Math.abs(currentOffset - lastOffset) > 2) {
+                lastOffset = currentOffset;
+                window.lenis.scrollTo(element, { 
+                  duration: 1.0, 
+                  offset: hash.startsWith('#project-') ? -120 : 0 
+                });
+              }
+            };
+            
+            scrollAndCheck();
+            setTimeout(scrollAndCheck, 400);
+            setTimeout(scrollAndCheck, 800);
+            setTimeout(scrollAndCheck, 1200);
+          } else {
+            const scrollIntoView = () => {
+              element.scrollIntoView({ 
+                behavior: 'smooth', 
+                block: hash.startsWith('#project-') ? 'center' : 'start' 
+              });
+            };
+            scrollIntoView();
+            setTimeout(scrollIntoView, 400);
+            setTimeout(scrollIntoView, 800);
+            setTimeout(scrollIntoView, 1200);
+          }
+          window.history.replaceState(null, '', window.location.pathname);
+        }
+      }, 500);
+      return () => clearTimeout(timeoutId);
+    }
+  }, [pathname, isProjectPage]);
 
   const handleClick = (e, href) => {
     e.preventDefault();
@@ -40,12 +84,16 @@ export default function Navbar() {
     setTimeout(() => {
       if (isProjectPage) {
         // If on project page, navigate to main page first, then scroll
-        window.location.href = `/${href}`;
+        router.push(`/${href}`);
       } else {
         // If on main page, smooth scroll
         const element = document.querySelector(href);
         if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
+          if (window.lenis) {
+            window.lenis.scrollTo(element, { duration: 1.5 });
+          } else {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
         }
       }
     }, 100);
