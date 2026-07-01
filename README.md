@@ -1,26 +1,5 @@
 <div align="center">
-  <svg viewBox="0 0 800 200" fill="none" xmlns="http://www.w3.org/2000/svg" width="100%">
-    <rect width="800" height="200" rx="24" fill="#020617"/>
-    <defs>
-      <linearGradient id="text-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stop-color="#60a5fa" />
-        <stop offset="50%" stop-color="#a855f7" />
-        <stop offset="100%" stop-color="#2dd4bf" />
-      </linearGradient>
-      <linearGradient id="border-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stop-color="#1e293b" />
-        <stop offset="50%" stop-color="#3b82f6" stop-opacity="0.3"/>
-        <stop offset="100%" stop-color="#1e293b" />
-      </linearGradient>
-    </defs>
-    <rect x="2" y="2" width="796" height="196" rx="22" stroke="url(#border-grad)" stroke-width="4"/>
-    <text x="50%" y="45%" dominant-baseline="middle" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="48" font-weight="900" fill="url(#text-grad)" letter-spacing="4">
-      ISLAMUL HOQUE
-    </text>
-    <text x="50%" y="68%" dominant-baseline="middle" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="600" fill="#94a3b8" letter-spacing="2">
-      Interactive 3D Portfolio &amp; Project Showcases
-    </text>
-  </svg>
+  <img src="public/icons/banner.svg" alt="Islamul Hoque Portfolio Banner" width="100%" />
 </div>
 
 <br />
@@ -36,13 +15,13 @@
 
 <br />
 
-## <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 8px; display: inline-block;" xmlns="http://www.w3.org/2000/svg"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>Project Overview
+## <img src="public/icons/overview.svg" alt="Overview Icon" width="24" height="24" /> Project Overview
 
 Welcome to Portfolio 2.0, a state-of-the-art interactive portfolio designed as a premium open-source showcase. Built with Next.js, React 19, and Tailwind CSS v4, this application represents professional-grade frontend architecture. It integrates highly interactive 3D particle simulations, hardware-accelerated scroll animations, and dynamic API configurations to deliver a visually striking and responsive user experience.
 
 ---
 
-## <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 8px; display: inline-block;" xmlns="http://www.w3.org/2000/svg"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>Key Features
+## <img src="public/icons/features.svg" alt="Features Icon" width="24" height="24" /> Key Features
 
 - **Interactive 3D Environments**: Built on React Three Fiber and Three.js, rendering a responsive stellar starfield particle canvas reacting to window size and movements.
 - **GSAP Orbits & Hover Physics**: Custom rotation systems powering nested circles of technologies in the About section alongside micro-interaction animations.
@@ -50,11 +29,11 @@ Welcome to Portfolio 2.0, a state-of-the-art interactive portfolio designed as a
 - **Dynamic Routing & Modals**: Implements Next.js dynamic routing to showcase project case studies, featuring sub-galleries, specifications, and external repositories.
 - **Infinite Skills Marquee**: Continuously loop-scrolling technological masteries for visual density.
 - **Custom Cursor Tracker**: Floating, responsive cursor following the viewport with spring interpolation.
-- **Secure Serverless Form Routing**: Contact section backed by serverless Next.js API routes with Resend integration to process secure form transmissions to email inbox.
+- **Secure Serverless Form Routing**: Contact section backed by serverless Next.js API routes with Resend integration to process secure form submissions to email inbox.
 
 ---
 
-## <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2dd4bf" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 8px; display: inline-block;" xmlns="http://www.w3.org/2000/svg"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>Technologies Used
+## <img src="public/icons/tech-stack.svg" alt="Tech Stack Icon" width="24" height="24" /> Technologies Used
 
 The project is built exclusively with modern packages specified in the environment dependencies:
 
@@ -84,7 +63,7 @@ The project is built exclusively with modern packages specified in the environme
 
 ---
 
-## <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 8px; display: inline-block;" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>Environment Configuration
+## <img src="public/icons/env-config.svg" alt="Environment Configuration Icon" width="24" height="24" /> Environment Configuration
 
 To process form notifications, create a `.env` (or `.env.local`) file in the root directory.
 
@@ -98,7 +77,7 @@ RESEND_API_KEY=your_resend_api_key_here
 
 ---
 
-## <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 8px; display: inline-block;" xmlns="http://www.w3.org/2000/svg"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>Folder Structure
+## <img src="public/icons/folder-structure.svg" alt="Folder Structure Icon" width="24" height="24" /> Folder Structure
 
 ```
 ├── app/
@@ -128,13 +107,14 @@ RESEND_API_KEY=your_resend_api_key_here
 ├── lib/
 │   └── utils.js               # Helper functions (including cn className merger)
 ├── public/                    # Root static site assets & project screenshots
+│   └── icons/                 # Local SVGs for README.md headings
 ├── package.json               # Scripts, manifest dependencies, and devDependencies
 └── eslint.config.mjs          # Lint guidelines config file
 ```
 
 ---
 
-## <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 8px; display: inline-block;" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect><line x1="6" y1="10" x2="10" y2="10"></line><line x1="6" y1="14" x2="18" y2="14"></line></svg>Local Installation & Setup
+## <img src="public/icons/setup.svg" alt="Setup Icon" width="24" height="24" /> Local Installation & Setup
 
 1. **Clone the Repository**
    ```bash
@@ -161,7 +141,7 @@ RESEND_API_KEY=your_resend_api_key_here
 
 ---
 
-## <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 8px; display: inline-block;" xmlns="http://www.w3.org/2000/svg"><path d="M18 10.28A6 6 0 0 0 7.37 5.71 8 8 0 0 0 8 21.65h10a5.9 5.9 0 0 0 0-11.37z"></path></svg>Deployment Guide
+## <img src="public/icons/deployment.svg" alt="Deployment Icon" width="24" height="24" /> Deployment Guide
 
 Deploying directly on **Vercel** is recommended:
 
@@ -186,7 +166,7 @@ Deploying directly on **Vercel** is recommended:
 
 ---
 
-## <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 8px; display: inline-block;" xmlns="http://www.w3.org/2000/svg"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>Code Quality
+## <img src="public/icons/code-quality.svg" alt="Code Quality Icon" width="24" height="24" /> Code Quality
 
 Ensure quality guidelines are clean and uniform before submitting pull requests:
 - **Lint Verification**:
@@ -197,7 +177,7 @@ Ensure quality guidelines are clean and uniform before submitting pull requests:
 
 ---
 
-## <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ec4899" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 8px; display: inline-block;" xmlns="http://www.w3.org/2000/svg"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>Contributing
+## <img src="public/icons/contributing.svg" alt="Contributing Icon" width="24" height="24" /> Contributing
 
 Contributions to expand features or resolve display bugs are welcome:
 1. Fork the project.
@@ -208,13 +188,13 @@ Contributions to expand features or resolve display bugs are welcome:
 
 ---
 
-## <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f43f5e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 8px; display: inline-block;" xmlns="http://www.w3.org/2000/svg"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>License
+## <img src="public/icons/license.svg" alt="License Icon" width="24" height="24" /> License
 
 Distributed under the MIT License. See [LICENSE](LICENSE) for more information.
 
 ---
 
-## <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 8px; display: inline-block;" xmlns="http://www.w3.org/2000/svg"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>Author
+## <img src="public/icons/author.svg" alt="Author Icon" width="24" height="24" /> Author
 
 ### Islamul Hoque
 MERN Stack Developer | Backend Enthusiast | Problem Solver

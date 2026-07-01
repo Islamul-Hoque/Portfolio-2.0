@@ -1,0 +1,22 @@
+<svg viewBox="0 0 800 200" fill="none" xmlns="http://www.w3.org/2000/svg" width="100%">
+  <rect width="800" height="200" rx="24" fill="#020617"/>
+  <defs>
+    <linearGradient id="text-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#60a5fa" />
+      <stop offset="50%" stop-color="#a855f7" />
+      <stop offset="100%" stop-color="#2dd4bf" />
+    </linearGradient>
+    <linearGradient id="border-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="50%" stop-color="#3b82f6" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+  </defs>
+  <rect x="2" y="2" width="796" height="196" rx="22" stroke="url(#border-grad)" stroke-width="4"/>
+  <text x="50%" y="45%" dominant-baseline="middle" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="48" font-weight="900" fill="url(#text-grad)" letter-spacing="4">
+    ISLAMUL HOQUE
+  </text>
+  <text x="50%" y="68%" dominant-baseline="middle" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="600" fill="#94a3b8" letter-spacing="2">
+    Interactive 3D Portfolio &amp; Project Showcases
+  </text>
+</svg>
