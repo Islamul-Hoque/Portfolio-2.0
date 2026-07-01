@@ -11,7 +11,7 @@ const skillCategories = [
     skills: [
       { name: "Next.js", icon: <SiNextdotjs />, color: "#FFFFFF", percent: 85 },
       { name: "React.js", icon: <FaReact />, color: "#61DAFB", percent: 90 },
-        { name: "TypeScript", icon: <SiTypescript />, color: "#3178C6", percent: 88 },
+      { name: "TypeScript", icon: <SiTypescript />, color: "#3178C6", percent: 88 },
       { name: "JavaScript", icon: <FaJsSquare />, color: "#F7DF1E", percent: 92 },
       { name: "Redux Toolkit", icon: <SiRedux />, color: "#764ABC", percent: 85 },
       { name: "Tailwind CSS", icon: <SiTailwindcss />, color: "#06B6D4", percent: 95 },

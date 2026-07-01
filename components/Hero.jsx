@@ -2,14 +2,16 @@
 
 import { useEffect, useRef, useLayoutEffect, useState } from 'react';
 import { gsap } from 'gsap';
-import { Github, Linkedin, Download } from 'lucide-react';
+import { Github, Linkedin, Download, Eye } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const techIcons = [
-  { name: 'JavaScript', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
-  { name: 'React', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
-  // { name: 'MongoDB', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg' },
+  { name: 'TypeScript', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg' },
+  { name: 'PostgreSQL', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg' }, 
   { name: 'Next.js', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg' },
+  // { name: 'JavaScript', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
+  // { name: 'React', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
+  // { name: 'MongoDB', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg' },
 ];
 
 export default function Hero() {
@@ -194,27 +196,19 @@ export default function Hero() {
             transition={{ delay: 1.2 }}
             className="flex flex-wrap gap-6 items-center"
           >
-            <button className=" cursor-pointer relative group bg-blue-600 hover:bg-blue-700 text-white px-10 py-5 rounded-2xl font-bold flex items-center gap-3 transition-all hover:scale-[1.05] active:scale-[0.95] shadow-2xl shadow-blue-600/40">
+            <a href="https://drive.google.com/file/d/1Ayf9mT8R6bqHyuOiaeUfmeXao-gfnc5j/view?usp=drive_link" target="_blank" rel="noopener noreferrer" className="cursor-pointer relative group bg-blue-600 hover:bg-blue-700 text-white px-10 py-5 rounded-2xl font-bold flex items-center gap-3 transition-all hover:scale-[1.05] active:scale-[0.95] shadow-2xl shadow-blue-600/40">
               <div className="absolute inset-0 bg-white/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
-              <Download size={22} className="group-hover:-translate-y-1 transition-transform" />
-              Download Resume
-            </button>
+              <Eye size={22} className="group-hover:-translate-y-0.5 transition-transform" />
+              View Resume
+            </a>
             <div className="flex items-center gap-4">
-              <a
-                href="https://github.com/Islamul-Hoque"
-                target="_blank"
-                rel="noopener noreferrer"
+              <a href="https://github.com/Islamul-Hoque" target="_blank" rel="noopener noreferrer"
                 className="p-5 rounded-2xl bg-white/5 border border-white/10 text-white hover:border-blue-500 hover:text-blue-400 transition-all shadow-xl backdrop-blur-sm group"
-              >
-                <Github size={28} className="group-hover:rotate-12 transition-transform" />
+              > <Github size={28} className="group-hover:rotate-12 transition-transform" />
               </a>
-              <a
-                href="https://linkedin.com/in/islamul-hoque"
-                target="_blank"
-                rel="noopener noreferrer"
+              <a href="https://linkedin.com/in/islamul-hoque"  target="_blank" rel="noopener noreferrer"
                 className="p-5 rounded-2xl bg-white/5 border border-white/10 text-white hover:border-blue-500 hover:text-blue-400 transition-all shadow-xl backdrop-blur-sm group"
-              >
-                <Linkedin size={28} className="group-hover:-rotate-12 transition-transform" />
+              >  <Linkedin size={28} className="group-hover:-rotate-12 transition-transform" />
               </a>
             </div>
           </motion.div>
@@ -280,7 +274,7 @@ export default function Hero() {
                       <img 
                         src={icon.url} 
                         alt={icon.name} 
-                        className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 object-contain" 
+                        className="w-6 h-6  sm:w-8 sm:h-8 md:w-10 md:h-10 object-contain" 
                       />
                     </motion.div>
                   </div>
