@@ -6,19 +6,21 @@ import { motion } from "framer-motion";
 import { GraduationCap, Briefcase, Target, Layers } from "lucide-react";
 
 const orbit1 = [
-  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
   "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
   "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
 ];
 
 const orbit2 = [
-  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
-  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
+  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
   "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
   "https://i.ibb.co.com/S4TjwXWK/jwt.png",
+  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
 ];
 
 const orbit3 = [
+  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
   "https://i.ibb.co.com/Xf8dLyxt/tailwind-css.png",
   // 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original-wordmark.svg',
   "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
@@ -29,6 +31,8 @@ const orbit3 = [
   "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
   "https://i.ibb.co.com/n8NyzRM2/Shadcn.png",
   "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
+    "https://raw.githubusercontent.com/reduxjs/redux/master/logo/logo.png", 
+  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg", 
 ];
 
 export default function About() {
