@@ -3,20 +3,22 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaHtml5, FaCss3Alt, FaJsSquare, FaReact, FaNodeJs, FaGithub } from 'react-icons/fa';
-import { SiTailwindcss, SiExpress, SiMongodb, SiFirebase, SiVercel, SiNetlify, SiNextdotjs, SiVite, SiDaisyui, SiFigma, SiReactrouter } from 'react-icons/si';
+import { SiTailwindcss, SiExpress, SiMongodb, SiFirebase, SiVercel, SiNetlify, SiNextdotjs, SiVite, SiDaisyui, SiFigma, SiReactrouter, SiPostgresql, SiPostman, SiTypescript, SiRedux } from 'react-icons/si';
 
 const skillCategories = [
   {
     title: "Frontend Development",
     skills: [
-      { name: "React.js", icon: <FaReact />, color: "#61DAFB", percent: 90 },
       { name: "Next.js", icon: <SiNextdotjs />, color: "#FFFFFF", percent: 85 },
-      { name: "Tailwind CSS", icon: <SiTailwindcss />, color: "#06B6D4", percent: 95 },
+      { name: "React.js", icon: <FaReact />, color: "#61DAFB", percent: 90 },
+        { name: "TypeScript", icon: <SiTypescript />, color: "#3178C6", percent: 88 },
       { name: "JavaScript", icon: <FaJsSquare />, color: "#F7DF1E", percent: 92 },
-      { name: "HTML5", icon: <FaHtml5 />, color: "#E34F26", percent: 98 },
+      { name: "Redux Toolkit", icon: <SiRedux />, color: "#764ABC", percent: 85 },
+      { name: "Tailwind CSS", icon: <SiTailwindcss />, color: "#06B6D4", percent: 95 },
       { name: "CSS3", icon: <FaCss3Alt />, color: "#1572B6", percent: 95 },
+      { name: "HTML5", icon: <FaHtml5 />, color: "#E34F26", percent: 98 },
       // { name: "DaisyUI", icon: <SiDaisyui />, color: "#1AD1A5", percent: 88 },
-      { name: "React Router", icon: <SiReactrouter />, color: "#CA4245", percent: 90 },
+      // { name: "React Router", icon: <SiReactrouter />, color: "#CA4245", percent: 90 },
     ]
   },
   {
@@ -25,6 +27,7 @@ const skillCategories = [
       { name: "Node.js", icon: <FaNodeJs />, color: "#339933", percent: 85 },
       { name: "Express.js", icon: <SiExpress />, color: "#828282", percent: 82 },
       { name: "MongoDB", icon: <SiMongodb />, color: "#47A248", percent: 80 },
+      { name: "PostgreSQL", icon: <SiPostgresql />, color: "#336791", percent: 78 },
       { name: "Firebase", icon: <SiFirebase />, color: "#FFCA28", percent: 85 },
     ]
   },
@@ -32,10 +35,11 @@ const skillCategories = [
     title: "Tools & Deployment",
     skills: [
       { name: "GitHub", icon: <FaGithub />, color: "#FFFFFF", percent: 95 },
+      { name: "Postman", icon: <SiPostman />, color: "#FF6C37", percent: 88 },
+      { name: "Figma", icon: <SiFigma />, color: "#F24E1E", percent: 80 },
       { name: "Vercel", icon: <SiVercel />, color: "#FFFFFF", percent: 90 },
       { name: "Netlify", icon: <SiNetlify />, color: "#00C7B7", percent: 85 },
       // { name: "Vite", icon: <SiVite />, color: "#646CFF", percent: 92 },
-      { name: "Figma", icon: <SiFigma />, color: "#F24E1E", percent: 80 },
     ]
   }
 ];

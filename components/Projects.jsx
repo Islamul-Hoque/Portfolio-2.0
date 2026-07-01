@@ -195,7 +195,7 @@ export default function Projects() {
                     <motion.button
                       whileHover={{ scale: 1.2, rotate: 10 }}
                       onClick={() => openDetails(project)}
-                      className="p-5 bg-purple-600 text-white rounded-2xl shadow-xl shadow-purple-600/40"
+                      className="p-5 cursor-pointer bg-purple-600 text-white rounded-2xl shadow-xl shadow-purple-600/40"
                     >
                       <Info size={28} />
                     </motion.button>

@@ -194,7 +194,7 @@ export default function Hero() {
             transition={{ delay: 1.2 }}
             className="flex flex-wrap gap-6 items-center"
           >
-            <button className="relative group bg-blue-600 hover:bg-blue-700 text-white px-10 py-5 rounded-2xl font-bold flex items-center gap-3 transition-all hover:scale-[1.05] active:scale-[0.95] shadow-2xl shadow-blue-600/40">
+            <button className=" cursor-pointer relative group bg-blue-600 hover:bg-blue-700 text-white px-10 py-5 rounded-2xl font-bold flex items-center gap-3 transition-all hover:scale-[1.05] active:scale-[0.95] shadow-2xl shadow-blue-600/40">
               <div className="absolute inset-0 bg-white/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
               <Download size={22} className="group-hover:-translate-y-1 transition-transform" />
               Download Resume
